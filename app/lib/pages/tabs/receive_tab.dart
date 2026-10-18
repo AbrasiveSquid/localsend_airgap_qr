@@ -20,6 +20,7 @@ import 'package:localsend_isolates/util/sleep.dart';
 import 'package:refena_flutter/addons.dart';
 import 'package:refena_flutter/refena_flutter.dart';
 import 'package:routerino/routerino.dart';
+import 'package:localsend_app/pages/airgap/airgap_receive_page.dart';
 
 class ReceiveTab extends StatefulWidget {
   const ReceiveTab();
@@ -114,6 +115,18 @@ class _ReceiveTabState extends State<ReceiveTab> {
                       ),
                     ),
                   ),
+
+                  // button for receive airgap
+                  Center(
+                    child: OutlinedButton.icon(
+                      onPressed: () async {
+                        await context.push(() => const AirGapReceivePage());
+                      },
+                      icon: const Icon(Icons.qr_code_scanner),
+                      label: const Text('Receive via AirGap'),
+                    ),
+                  ),
+
                   const SizedBox(height: 15),
                 ],
               ),

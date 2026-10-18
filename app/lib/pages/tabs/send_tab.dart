@@ -34,6 +34,7 @@ import 'package:localsend_isolates/model/session_status.dart';
 import 'package:localsend_isolates/util/file_size_helper.dart';
 import 'package:refena_flutter/refena_flutter.dart';
 import 'package:routerino/routerino.dart';
+import 'package:localsend_app/pages/airgap/airgap_send_page.dart';
 
 const _horizontalPadding = 15.0;
 final pickerOptions = FilePickerOption.getOptionsForPlatform();
@@ -161,6 +162,19 @@ class SendTab extends StatelessWidget {
                           ),
                           const SizedBox(width: 15),
                         ],
+                      ),
+                      // added new button for feature
+                      const SizedBox(height: 10),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: OutlinedButton.icon(
+                            onPressed: () async{
+                              await context.push(() => AirGapSendPage(file: vm.selectedFiles.first),
+                              );
+                            },
+                          icon: const Icon(Icons.qr_code),
+                          label: const Text('Send via AirGap'),
+                        ),
                       ),
                     ],
                   ),
